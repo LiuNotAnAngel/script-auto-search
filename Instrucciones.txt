@@ -1,0 +1,23 @@
+Instalar python si no lo tienes.
+El script usa solo herramientas estándar, no requiere instalar nada más.
+
+Descargar y ejecutar el script
+
+______________________________________________________________________________________________________________
+
+UNETE Y GANA PUNTOS REWARDS DE MICROSOFT
+
+https://rewards.bing.com/welcome?rh=83AFE494&ref=rafsrchae&form=ML2XE3&OCID=ML2XE3&PUBL=RewardsDO&CREA=ML2XE3
+
+______________________________________________________________________________________________________________
+
+Link al script: https://gist.github.com/mseligmann39/832dd46ce82ab52aa254a9c6f15c398a
+
+Luego de ejecutar, ir al navegador con Bing y esperar que se realicen las búsquedas automaticamente
+
+Para aumentar o disminuir la cantidad de busquedas, click derecho, abrir con (editor de texto) y cambiar "numero_de_repeticiones = 30" por el numero que deseen
+
+
+Like y suscribirse :)
+
+USAR BAJO PROPIA RESPONSABILIDAD (Esto no está aprobado por Microsoft, ser discreto)
