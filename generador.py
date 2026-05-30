@@ -1,10 +1,24 @@
 import ollama
+import os
+import sys
+
 
 # --- CONFIGURACIÓN ---
 MODELO = "novaforgeai/gemma2:2b-optimized" 
 
 # El archivo de salida donde se guardarán los resultados
-ARCHIVO_SALIDA = "palabras.txt"
+
+def get_base_dir():
+    """Devuelve el directorio donde está el ejecutable (si está empaquetado) 
+    o el directorio del script (si se ejecuta como script)."""
+    if getattr(sys, 'frozen', False):
+        # Modo ejecutable: directorio del .exe
+        return os.path.dirname(sys.executable)
+    else:
+        # Modo desarrollo: directorio del script actual
+        return os.path.dirname(os.path.abspath(__file__))
+
+ARCHIVO_SALIDA = os.path.join(get_base_dir(), "palabras.txt")
 
 # --- PROMPT (La instrucción que le damos al modelo) ---
 def construir_prompt(palabra_clave):

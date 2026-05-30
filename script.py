@@ -1,4 +1,3 @@
-#python script.py
 
 from pynput import keyboard
 import pyautogui
@@ -6,10 +5,20 @@ import os
 import time
 import random
 
+def get_base_dir():
+    """Devuelve el directorio donde está el ejecutable (si está empaquetado) 
+    o el directorio del script (si se ejecuta como script)."""
+    if getattr(sys, 'frozen', False):
+        # Modo ejecutable: directorio del .exe
+        return os.path.dirname(sys.executable)
+    else:
+        # Modo desarrollo: directorio del script actual
+        return os.path.dirname(os.path.abspath(__file__))
+
 def on_press(key):
     toSearch = set()
-    base_dir = os.path.dirname(__file__)
-    palabras_path = os.path.join(base_dir, "palabras.txt")
+
+    palabras_path = os.path.join(get_base_dir(), "palabras.txt")
     with open(palabras_path, "r", encoding="utf-8") as file:
         for line in file:
             line = line.strip()
