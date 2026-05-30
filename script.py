@@ -1,6 +1,5 @@
 #python script.py
 
-
 from pynput import keyboard
 import pyautogui
 import os
@@ -20,8 +19,8 @@ def on_press(key):
         if key.char == 'l':
             print("Starting...")
             while toSearch:
-                time.sleep(random.uniform(1, 20))
-                pyautogui.hotkey('ctrl', 'n')
+                time.sleep(random.uniform(1, 10))
+                pyautogui.hotkey('ctrl', 't')
                 word = toSearch.pop()
                 pyautogui.write(word)
                 pyautogui.press('enter')
@@ -50,5 +49,13 @@ def tab_simulate():
         pyautogui.press('enter')
         time.sleep(random.uniform(1, 2))
         pyautogui.hotkey('alt', 'left') 
-with keyboard.Listener(on_press=on_press) as listener:
-    listener.join()
+
+
+def start_listener():
+    """Inicia el listener de teclado. Llamar desde otro módulo para arrancar."""
+    with keyboard.Listener(on_press=on_press) as listener:
+        listener.join()
+
+
+if __name__ == "__main__":
+    start_listener()
