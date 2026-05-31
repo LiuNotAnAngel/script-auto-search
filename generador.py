@@ -5,6 +5,7 @@ import sys
 
 # --- CONFIGURACIÓN ---
 MODELO = "novaforgeai/gemma2:2b-optimized" 
+TERMINOS_DE_BUSQUEDA = 30
 
 # El archivo de salida donde se guardarán los resultados
 
@@ -26,7 +27,7 @@ def construir_prompt(palabra_clave):
     Construye un prompt efectivo para generar términos de búsqueda
     """
     prompt = f"""
-Eres un asistente que genera términos de búsqueda. Tu tarea es crear una lista de 30 términos de búsqueda variados, creativos y útiles para la palabra clave: '{palabra_clave}'.
+Eres un asistente que genera términos de búsqueda. Tu tarea es crear una lista de {TERMINOS_DE_BUSQUEDA} términos de búsqueda variados, creativos y útiles para la palabra clave: '{palabra_clave}'.
 
 Instrucciones:
 - Genera búsquedas que exploren diferentes ángulos: noticias, contexto histórico, análisis, controversias, etc.
@@ -69,11 +70,7 @@ def generar_busquedas(palabra_clave):
 
         # Guardamos el resultado en el archivo .txt
         with open(ARCHIVO_SALIDA, 'w', encoding='utf-8') as archivo:
-            archivo.write(f"Palabra clave: {palabra_clave}\n")
-            archivo.write(f"{'-'*30}\n")
             archivo.write(busquedas_generadas)
-            archivo.write(f"\n{'-'*30}\n")
-            archivo.write("Proceso completado con éxito.")
 
         print("\n--- Resultado generado ---")
 
