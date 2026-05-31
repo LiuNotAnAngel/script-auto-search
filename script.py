@@ -2,6 +2,7 @@
 from pynput import keyboard
 import pyautogui
 import os
+import sys
 import time
 import random
 
@@ -15,14 +16,21 @@ def get_base_dir():
         # Modo desarrollo: directorio del script actual
         return os.path.dirname(os.path.abspath(__file__))
 
-def on_press(key):
-    toSearch = set()
 
+def cargar_palabras():
+    palabras = set()
     palabras_path = os.path.join(get_base_dir(), "palabras.txt")
+
     with open(palabras_path, "r", encoding="utf-8") as file:
         for line in file:
-            line = line.strip()
-            toSearch.add(line)
+            palabra = line.strip().lstrip("- ").strip()
+            if palabra:
+                palabras.add(palabra)
+
+    return palabras
+
+def on_press(key):
+    toSearch = cargar_palabras()
     print(toSearch)
     try:
         if key.char == 'l':

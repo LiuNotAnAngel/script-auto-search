@@ -1,6 +1,8 @@
 import ollama
 import os
 import sys
+import urllib.request
+import urllib.error
 
 
 # --- CONFIGURACIÓN ---
@@ -20,6 +22,14 @@ def get_base_dir():
         return os.path.dirname(os.path.abspath(__file__))
 
 ARCHIVO_SALIDA = os.path.join(get_base_dir(), "palabras.txt")
+
+
+def ollama_disponible():
+    try:
+        with urllib.request.urlopen("http://localhost:11434/api/tags", timeout=2) as response:
+            return response.status == 200
+    except (urllib.error.URLError, ConnectionError, TimeoutError, OSError):
+        return False
 
 # --- PROMPT (La instrucción que le damos al modelo) ---
 def construir_prompt(palabra_clave):
